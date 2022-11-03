@@ -2,14 +2,14 @@ import random
 import getpass
 
 class Player:
-    def __init__(self, name, playertype=True):
+    def __init__(self, name="", playertype=True):
         self.name = name
         self.playertype = playertype
         self.move = None
         self.score = 0
 
     def translate_move(self, move):
-        if isinstance(move, str):
+        if move:
             possiblemoves_str = {'rock':0,'paper':1,'scizor':2,'exit':3,'quit':3,'instructions':4,'0':0,'1':1,'2':2}
             for k,v in possiblemoves_str.items():
                 if k.startswith(move.lower()):
