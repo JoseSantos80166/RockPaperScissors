@@ -89,6 +89,7 @@ class Game:
             self.started = False
             self.player1.reset_score()
             self.player2.reset_score()
+            self.rounds = 0
             self.run = False
             self.resetgame = True
 
@@ -101,13 +102,11 @@ class Game:
         self.started = True
         self.rounds += 1
 
-
         movenames = ['Rock','Paper','Scizor','Exit','Instructions']
-        #print(self.player1.move)
         self.player_move(self.player1)
         if self.run:
             self.player_move(self.player2)
-            
+
         if self.run:
             if self.player1.move == self.player2.move:
                 round_result_str = 'TIE'
