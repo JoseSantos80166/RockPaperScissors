@@ -15,6 +15,15 @@ class Game:
         self.player2 = Player()
 
     def game_start(self):
+
+        """
+        Game-start is the first function to be ran after __init__ , 
+        checks number of players in input arguments to check what to do.
+        Does not have a return, only calls game_loop()
+
+        :param playernames: arguments for the player names while starting game.py
+        """ 
+
         if len(self.playernames) == 0:
             self.get_player_name(self.player1)
             self.get_game_mode()
@@ -34,6 +43,10 @@ class Game:
 
 
     def get_player_name(self, player, player2=False):
+        """
+        Handles the player names, if there is not a name, the function asks for one as well as taking
+        into consideration 
+        """ 
         if not player.name:
             player.name = input("What is your name?: ")
 
@@ -49,6 +62,9 @@ class Game:
 
 
     def get_game_mode(self):
+        """
+        gives the player the choice to select the game mode, based on user input
+        """ 
         choice = (input("Choose a game mode: (1) - vs CPU   (2) - vs Player 2   Exit   Instructions: "))
         if choice == "1":
             self.player2.name = "BOT"
@@ -75,6 +91,9 @@ class Game:
 
 
     def player_move(self, player):
+        """
+        Checks the player move and takes action accordingly
+        """ 
         player.get_move()
 
         while player.move == -1:
@@ -99,6 +118,9 @@ class Game:
 
 
     def round(self):
+        """
+        Handles the actions needed for a round to be completed (check who wins, updates score, prints information about round)
+        """ 
         self.started = True
         self.rounds += 1
 
@@ -124,6 +146,9 @@ class Game:
         
 
     def game_loop(self):
+        """
+        Creates de game loop, calling round() multiple types or exiting when needed
+        """ 
         while self.run:
             self.round()
             if self.max_score != -1:
